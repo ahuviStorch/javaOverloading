@@ -8,8 +8,8 @@ public class MyTime extends MyDate {
     private int minutes;
     private int seconds;
 
-    public MyTime(int day, int month, int year, int hours, int minutes, int seconds) {
-        super(day, month, year);
+    public MyTime(int day, int month, int year,int dailySerialNum, int hours, int minutes, int seconds) {
+        super(day, month, year, dailySerialNum);
         setHours(hours);
         setMinutes(minutes);
         setSeconds(seconds);

@@ -1,14 +1,16 @@
 package functionOverloading;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoField;
 
 public class MyDate {
 	protected int day;
 	protected int month;
 	protected int year;
+	protected daysOfWeek dayInWeek;
 
 	public String getDate(char c) {
-		String str = "" + this.day + c + this.month + c + this.year;
+		String str = "" + this.day + c + this.month + c + this.year+this.dayInWeek;
 		return str;
 	}
 
@@ -17,7 +19,10 @@ public class MyDate {
 		this.year = today.getYear(); // שליפת השנה
 		this.month = today.getMonthValue(); // שליפת החודש
 		this.day = today.getDayOfMonth(); // שליפת היום
+		int dailySerialNum = today.get(ChronoField.DAY_OF_WEEK);
+		this.dayInWeek = daysOfWeek.values()[dailySerialNum-1];
 
+		
 	}
 
 	public int getDay() {
@@ -32,11 +37,13 @@ public class MyDate {
 		return year;
 	}
 
-	public MyDate(int day, int month, int year) {
+	public MyDate(int day, int month, int year,int dailySerialNum) {
 
 		this.day = day;
 		this.month = month;
 		this.year = year;
+		this.dayInWeek = daysOfWeek.values()[dailySerialNum-1];
+
 	}
 
 	public void setDay(int day) {
@@ -62,4 +69,13 @@ public class MyDate {
 			this.year = 2000;
 		}
 	}
+
+	public daysOfWeek getDayInWeek() {
+		return dayInWeek;
+	}
+
+	public void setDayInWeek(daysOfWeek dayInWeek) {
+		this.dayInWeek = dayInWeek;
+	}
+	
 }
